@@ -1,0 +1,6 @@
+package vo;
+
+@Data
+public class PersonVO {
+	
+}

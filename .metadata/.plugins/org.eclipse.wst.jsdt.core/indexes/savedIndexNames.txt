@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2275282689.index
+652065640.index
+242795426.index
+1812029713.index
+699099847.index
+2300763135.index
