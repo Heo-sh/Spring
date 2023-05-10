@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	<!-- Spring에서 객체를 생성해주는 영역 -->
+	<!-- Spring에서는 객체를 bean이라 한다. -->
+
+	<!-- setter 주입 -->
+	<!-- PersonVO p1 = new PersonVO(); -->
+	<!-- <bean id="p1" class="vo.PersonVO">
+		p1.setName("홍길동")
+		<property name="name" value="홍길동"/>
+		<property name="tel" value="010-1111-1111"/>
+		<property name="age" value="20"/>
+	</bean> -->
+	
+	<!-- 생성자 주입 -->
+	<!-- PersonVO p2 = new PersonVO("이길동", ...) -->
+	<!-- <bean id="p2" class="vo.PersonVO">
+		<constructor-arg value="이길동"/>
+		<constructor-arg value="010-2222-2222"/>
+		<constructor-arg value="30"/>
+	</bean> -->
+	
+	<!-- 어노테이션이 쓰인 모든 것을 스캔하겠다. -->
+	<context:component-scan base-package="config"/>
 </beans>
