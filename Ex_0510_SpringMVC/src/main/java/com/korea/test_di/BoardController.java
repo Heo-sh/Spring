@@ -1,6 +1,9 @@
 package com.korea.test_di;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import service.BoardServiceImpl;
@@ -20,7 +23,11 @@ public class BoardController {
 	//사용자가 board/list.do를 요청하면 해당 메서드가 실행된다.
 	//jsp의 url매핑이라고 생각하면 된다.
 	@RequestMapping("/board/list.do")
-	public String list() {
+	public String list(Model model) { //model: 바인딩만 해준다.
+		List<Object> list = service.selectList();
+		
+		model.addAttribute("list", list); //바인딩
+		
 		return "board_list"; //포워딩
 	}
 	
