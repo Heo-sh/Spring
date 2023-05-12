@@ -23,7 +23,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 		return new String[] {"/"};
 	}
 
-	//filter
+	//filter: 모든 jsp파일을 utf-8로 인코딩하라는 코드
 	@Override
 	protected Filter[] getServletFilters() {
 		CharacterEncodingFilter charaterEncodingFilter = new CharacterEncodingFilter();

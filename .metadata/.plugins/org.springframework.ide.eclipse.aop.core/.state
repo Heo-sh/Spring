@@ -4,4 +4,5 @@
 <aop-project name="Ex_0508_first"/>
 <aop-project name="Ex_0511_SpringParam"/>
 <aop-project name="Ex_0510_SpringMVC"/>
+<aop-project name="Ex_0512_DB"/>
 </aop-reference-model>

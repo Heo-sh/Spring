@@ -3,8 +3,12 @@ D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch
 \Ex_0511_SpringMVC\src\main\java
 D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4217316506.index
 \Ex_0508_first\src\main\java
+D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2945973539.index
+\Ex_0512_DB\src\main\java
 D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2918286157.index
 \Ex_0511_SpringMVC\src\main\java
+D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1143518318.index
+\Ex_0512_DB\src\main\java
 D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1172706284.index
 \Ex_0510_SpringMVC\src\main\java
 D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1369731333.index
