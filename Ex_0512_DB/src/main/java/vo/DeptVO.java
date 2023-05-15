@@ -3,9 +3,10 @@ package vo;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 public class DeptVO {
+
 	private int deptno;
-	private String dname, loc;
+	private String dname,loc;
 }

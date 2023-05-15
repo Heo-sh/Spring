@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
+<aop-project name="Ex_0512_DB(excercise)"/>
 <aop-project name="Ex_0511_SpringMVC"/>
+<aop-project name="Ex_0515_DB"/>
 <aop-project name="Ex_0508_first"/>
 <aop-project name="Ex_0511_SpringParam"/>
 <aop-project name="Ex_0510_SpringMVC"/>

@@ -1,15 +1,18 @@
 package context;
 
+import javax.sql.DataSource;
+
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//bean객체를 여기서 만든다.
-//dataSource 객체만 관리할 설정파일이다.
+//datasource 객체만 관리할 설정파일
 @Configuration
 public class Context_1_dataSource {
+	
+	//JSDI
 	@Bean
-	public BasicDataSource ds() {
+	public DataSource ds() {
 		BasicDataSource ds = new BasicDataSource();
 		ds.setDriverClassName("oracle.jdbc.OracleDriver");
 		ds.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
@@ -17,6 +20,5 @@ public class Context_1_dataSource {
 		ds.setPassword("1111");
 		return ds;
 	}
-	
-	
+
 }

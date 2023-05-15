@@ -2,7 +2,6 @@ package context;
 
 import javax.sql.DataSource;
 
-import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -11,52 +10,27 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
-//bean객체를 여기서 만든다.
-//Mybatis에 관련된 객체만 관리할 설정파일이다.
+//Mybatis에 관련된 객체만 관리할 설정파일
 @Configuration
 public class Context_2_mybatis {
-	DataSource ds; //받아서 넣은 걸 넣고!
 	
-	public Context_2_mybatis(BasicDataSource ds) {
-		this.ds = ds; //1에서 받아서 넣어주고
-	} //생성자 주입
+//	public Context_2_mybatis() {
+//		// TODO Auto-generated constructor stub
+//	} //생성자를 통해 DataSource ds를 받은 후 Bean객체에서 이용 가능
 	
 	@Bean
-	public SqlSessionFactoryBean factoryBean() {
+	public SqlSessionFactory factoryBean(DataSource ds) throws Exception {
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
-		factoryBean().setDataSource(ds); //여기서 사용
+		factoryBean.setDataSource(ds);
 		
-		//Mybatis 설정파일 경로
-		Resource configLocation = new ClassPathResource("config/mybatis/maybatis-config.xml");
-		factoryBean.setConfigLocation(configLocation);
-		
-		return factoryBean;
+		// 추가적인 MyBatis 설정 -> 경로
+        factoryBean.setConfigLocation(new ClassPathResource("config/mybatis/mybatis-config.xml"));
+        return factoryBean.getObject();
+  
 	}
 	
 	@Bean
-	public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory factoryBean) {
+	public SqlSessionTemplate sqlSessionBean(SqlSessionFactory factoryBean) {
 		return new SqlSessionTemplate(factoryBean);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

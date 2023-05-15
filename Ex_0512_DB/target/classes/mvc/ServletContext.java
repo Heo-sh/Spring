@@ -13,36 +13,37 @@ import com.korea.db.DeptController;
 
 import dao.DeptDAO;
 
+
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.korea.db")
-/*어노테이션의 상속관계
- * @Component
- * ㄴ @Controller
- * ㄴ @Service
- * ㄴ @Repository
+//@ComponentScan("com.korea.db")
+//어노테이션에도 상속관계가 있다
+/*
+ *@Component
+ *	ㄴ@Controller
+ *	ㄴ@Service
+ *	ㄴ@Repository 
  * */
-//컴포넌트의 자식객체가 들어있으면 사실 Controller가 아니어도 객체가 생성될 수 있다.
+//컴포넌트의 자식객체가 들어있으면 사실 Controller가 아니어도 만들어 질 수 있다.
 public class ServletContext implements WebMvcConfigurer {
-	
-	//servlet-context.xml의 handler 부분
-	//내가 앞으로 사용할 이미지, JS, CSS파일과 같은 참조파일들을 webapp/resources에 보관하라는 코드 
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations("/resources");
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
+
 	
-	/*
-	 * @Bean public InternalResourceViewResolver resolver() {
-	 * InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-	 * resolver.setViewClass(JstlView.class); resolver.setPrefix("/WEB-INF/views/");
-	 * resolver.setSuffix(".jsp"); return resolver; } //자동탐색
-	 */
+//	  @Bean 
+//	  public InternalResourceViewResolver resolver() {
+//	  InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+//	  resolver.setViewClass(JstlView.class); resolver.setPrefix("/WEB-INF/views/");
+//	  resolver.setSuffix(".jsp"); return resolver; }
 	
 	@Bean
-	public DeptController dept() {
-		DeptDAO dao = new DeptDAO();
-		DeptController dept = new DeptController(dao);
-		return dept;
+	public DeptController deptController(DeptDAO dept_dao) {
+		return new DeptController(dept_dao);
 	}
+	 
+	
+
 }

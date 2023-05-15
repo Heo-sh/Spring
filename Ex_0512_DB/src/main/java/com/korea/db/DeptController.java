@@ -11,21 +11,20 @@ import vo.DeptVO;
 
 @Controller
 public class DeptController {
-	DeptDAO dao;
+
+	public static final String VIEW_PATH = "/WEB-INF/views/dept/";
 	
-	public DeptController(DeptDAO dao) {
-		this.dao = dao;
-	}
+	DeptDAO dept_dao;
 	
-	final static String VIEW_PATH = "/WEB-INF/views/dept/";
+	public DeptController(DeptDAO dept_dao) {
+		this.dept_dao = dept_dao;
+	} //생성자
 	
-	@RequestMapping(value= {"/", "/list.do"})
+	@RequestMapping(value= {"/","list.do"})
 	public String list(Model model) {
-		List<DeptVO> list = dao.selectList();
+		List<DeptVO> list = dept_dao.selectList();
 		
-		model.addAttribute("list", list);
-		System.out.println(list.get(0).getDname());
-		
+		model.addAttribute("list",list);
 		return VIEW_PATH + "dept_list.jsp";
 	}
 }

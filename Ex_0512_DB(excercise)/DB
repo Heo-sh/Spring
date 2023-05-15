@@ -1,0 +1,15 @@
+Spring Project에 DB를 연결하기 위해서
+ojdbc6를 tomcat lib 폴더에 넣어준다.
+mybatis 관련 파일들도 프로젝트에 넣어준다.
+mvnrepository에서 dbcp를 pom.xml에 넣어준다.
+mybatis를 pom.xml에 넣어준다.
+mybatis-spring을 pom.xml에 넣어준다.
+spring-jdbc를 pom.xml에 넣어준다.
+
+config - web.xml
+
+conetext - root
+
+mvc - servlet
+
+의 역할을 한다.

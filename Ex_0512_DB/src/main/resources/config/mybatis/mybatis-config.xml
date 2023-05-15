@@ -9,7 +9,7 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias type="vo.DeptVo" alias="dept"/>
+		<typeAlias type="vo.DeptVO" alias="dept"/> 
 	</typeAliases>
 	
 	<mappers>
