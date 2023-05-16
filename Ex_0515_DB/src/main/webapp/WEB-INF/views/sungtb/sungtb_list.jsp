@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
+	<table border="1">
 		<tr>
 			<th>번호</th>
 			<th>이름</th>
