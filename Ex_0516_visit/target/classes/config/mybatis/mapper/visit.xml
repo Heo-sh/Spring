@@ -17,6 +17,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					sysdate
 		)
 	</insert>
+	
+	<delete id="visit_delete" parameterType="java.util.HashMap">
+		delete from visit where idx = #{idx} and pwd = #{pwd}
+	</delete>
+	
+	<select id="visit_one" resultType="visit" parameterType="int">
+		select * from visit where idx = #{idx}
+	</select>
+	
+	<update id="visit_update" parameterType="visit">
+		update visit set 
+			content = #{content},
+			pwd = #{pwd},
+			ip = #{ip},
+			regdate = sysdate
+			where idx = #{idx}
+	</update>
 </mapper>
 
 
