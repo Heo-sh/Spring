@@ -59,6 +59,8 @@ public class VisitController {
 		
 		int res = visit_dao.delete(map);
 		
+		//Ajax의 사용이유 중 제일 큰 건
+		//- 사용 여부에 대한 알림을 받기 위함이 좀 크다.
 		String result = "no";
 		
 		if (res == 1) {
@@ -77,6 +79,7 @@ public class VisitController {
 		//파라미터로 넘어온 idx를 이용해 해당 idx를 가진 게시물 정보를 얻어온다.
 		VisitVO vo =  visit_dao.selectOne(idx);
 		
+		//바인딩
 		model.addAttribute("vo", vo);
 		
 		return MyCommon.VIEW_PATH + "visit_modify_form.jsp";

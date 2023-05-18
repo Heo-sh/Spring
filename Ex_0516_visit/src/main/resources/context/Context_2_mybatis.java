@@ -19,6 +19,7 @@ public class Context_2_mybatis {
 //	} //생성자를 통해 DataSource ds를 받은 후 Bean객체에서 이용 가능
 	
 	@Bean
+	//접근제한자 반환형 메서드명
 	public SqlSessionFactory factoryBean(DataSource ds) throws Exception {
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
 		factoryBean.setDataSource(ds);

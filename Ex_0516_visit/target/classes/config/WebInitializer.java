@@ -18,7 +18,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class[] { Context_1_dataSource.class,Context_2_mybatis.class,Context_3_dao.class };
-	}
+	} //class들에 대한 정보를 받아온다.
 
 	// Servlet WebApplicationContext
 	@Override
