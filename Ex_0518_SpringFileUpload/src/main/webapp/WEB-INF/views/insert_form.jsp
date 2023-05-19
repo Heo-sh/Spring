@@ -13,7 +13,7 @@
 		</script>
 	</head>
 	<body>
-		<!-- 파일 업로드 코드시 method는 반드시 post, enctype="multipart/form-data"도 무조건 -->
+		<!-- 파일 업로드 시 method는 반드시 post, enctype="multipart/form-data"도 무조건 -->
 		<form method="post" enctype="multipart/form-data">
 			제목: <input name="title"><br>
 			<!-- photo: 사진에 대한 정보(이름, 용량, etc...) -->

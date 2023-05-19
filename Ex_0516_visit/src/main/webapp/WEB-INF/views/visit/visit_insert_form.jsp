@@ -10,6 +10,7 @@
 				var name = f.name.value;
 				var content = f.content.value.trim();
 				var pwd = f.pwd.value;
+				var photo = f.photo.value;
 				
 				if (name == '') {
 					alert("이름을 입력하세요");
@@ -24,14 +25,14 @@
 					return;
 				}
 				
-				f.method = "GET";
+				f.method = "POST";
 				f.action = "insert.do";
 				f.submit();
 			}
 		</script>
 	</head>
 	<body>
-		<form>
+		<form enctype="multipart/form-data">
 			<table border="1" align="center"> 
 				<caption>:::새 글 작성:::</caption>
 				<tr>
@@ -52,6 +53,12 @@
 							wrap="on"
 						>
 						</textarea>
+					</td>
+				</tr>
+				<tr>
+					<th>이미지 첨부</th>
+					<td>
+						<input type="file" name="photo">
 					</td>
 				</tr>
 				<tr>

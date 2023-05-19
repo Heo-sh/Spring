@@ -11,7 +11,7 @@ import context.Context_1_dataSource;
 import context.Context_2_mybatis;
 import context.Context_3_dao;
 import context.Context_4_fileupload;
-import mvc.ServletContext;
+import mvc.Servlet_Context;
 
 public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -30,7 +30,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	// Servlet WebApplicationContext
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] { ServletContext.class };
+		return new Class[] { Servlet_Context.class };
 	}
 	
     // DispatcherServlet Mapping

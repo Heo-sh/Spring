@@ -8,6 +8,7 @@
 	</head>
 	<body>
 		제목: ${vo.title}<br>
+						<!-- webapp까지의 경로 -->
 		<img alt="" src="${pageContext.request.contextPath}/resources/upload/${vo.filename}" width="200">
 	</body>
 </html>

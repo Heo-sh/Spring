@@ -14,7 +14,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					#{content},
 					#{pwd},
 					#{ip},
-					sysdate
+					sysdate,
+					#{filename} <!-- DB가 아닌 실제 저장한 공간에서 이름을 조회해서 가지고 온다. -->
 		)
 	</insert>
 	

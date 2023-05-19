@@ -85,7 +85,8 @@
 		<c:forEach var="vo" items="${list}">
 			<div class="visit_box">
 				<div class="type_content">
-					${vo.content}
+					<pre>${vo.content}</pre><br>
+					<img src="${pageContext.request.contextPath}/resources/upload/${vo.filename}" width="200">
 				</div>
 				<div class="type_name">
 					작성자: ${vo.name}(${vo.ip})
