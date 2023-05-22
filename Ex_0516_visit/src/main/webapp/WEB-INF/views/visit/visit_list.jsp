@@ -74,14 +74,44 @@
 				f.action = "modify_form.do";
 				f.method = "POST";
 				f.submit();
+			} //modify()
+			
+			//외부의 json 가져오기
+			function apiList() {
+				var url = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
+				var param = "key=f5eef3421c602c6cb7ea224104795888&targetDt=20230520";
+				
+				sendRequest(url, param, resultApi, "GET");
+			}
+			
+			function resultApi() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					var data = xhr.responseText;
+					
+					console.log(data);
+					
+					var json = (new Function('return' + data))();
+					
+					var res = json.boxOfficeResult.dailyBoxOfficeList[0].movieNm;
+					
+					//api버튼을 눌렀을 때 input태그에 제목 뜨게 하기
+					var api = document.getElementById("api");
+					api.value = res;
+				}
 			}
  		</script>
 	</head>
 	<body>
 		<div id="main_box" align="right">
-				<h1>방명록 리스트</h1>					<!-- 스프링에서는 jsp에서 jsp로 이동불가 -->
-				<input type="button" value="글쓰기" onclick="location.href='insert_form.do'">
+			<h1>방명록 리스트</h1>					<!-- 스프링에서는 jsp에서 jsp로 이동불가 -->
+				
+			<input type="button" value="API" onclick="apiList();">
+				
+			<input type="button" value="글쓰기" onclick="location.href='insert_form.do'">
 		</div>
+		
+		<input id="api">
+		
 		<c:forEach var="vo" items="${list}">
 			<div class="visit_box">
 				<div class="type_content">

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="b">
+
+	<select id="board_list" resultType="board" parameterType="java.util.Map">
+		select * from (select rank() over(order by ref desc, step) "no", b.* from board b) 
+		WHERE "no" BETWEEN #{start} and #{end}
+	</select>
+	
+	<!-- 전체 게시물 '수' 조회 -->
+	<select id="board_count" resultType="int">
+		select count(*) from board
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

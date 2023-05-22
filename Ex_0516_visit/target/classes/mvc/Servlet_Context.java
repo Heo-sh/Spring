@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.korea.visit.VisitController;
+import com.korea.visit.VisitJsonController;
 
 import dao.VisitDAO;
 
@@ -48,4 +49,9 @@ public class Servlet_Context implements WebMvcConfigurer {
 	public VisitController visitController(VisitDAO visit_dao) {
 		return new VisitController(visit_dao);
 	}
+	
+//	@Bean
+//	public VisitJsonController visitJsonController(VisitDAO visit_dao) {
+//		return new VisitJsonController(visit_dao);
+//	}
 }
