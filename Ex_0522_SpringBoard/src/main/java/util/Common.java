@@ -5,7 +5,7 @@ public class Common {
 	//따로 만듦
 	
 	//경로
-	public static final String VIEW_PATH = "/WEB-INF/views/";
+	public static final String VIEW_PATH = "/WEB-INF/views/board/";
 	
 	//일반 게시판용
 	public static class Board {

@@ -13,6 +13,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="board_count" resultType="int">
 		select count(*) from board
 	</select>
+	
+	<!-- idx에 해당하는 게시물 1건 조회 -->
+	<select id="board_one" resultType="board" parameterType="int">
+		select * from board where idx = #{idx}
+	</select>
+	
+	<!-- 조회 수 증가 -->
+	<update id="update_readhit" parameterType="int">
+		update board set readhit = readhit + 1 where idx = #{idx}
+	</update>
+	
+	<!-- 새 글 추가 -->
+	<!-- 추가할 때 column의 수에 맞게 추가해야 한다. -->
+	<insert id="board_insert" parameterType="board">
+		insert into board values(
+							seq_board_idx.nextVal,
+							#{name},
+							#{subject},
+							#{content},
+							#{pwd},
+							#{ip},
+							sysdate,
+							0,
+							seq_board_idx.currVal,
+							0,
+							0,
+							0	
+		)
+	</insert>
+	
+	<!-- 글 삭제된 것처럼 수정하기 -->
+	<update id="del_update" parameterType="board">
+		update board set 
+				name = #{name}, 
+				subject = #{subject},
+				del_info = -1 
+		where idx = #{idx}
+	</update>
 </mapper>
 
 
