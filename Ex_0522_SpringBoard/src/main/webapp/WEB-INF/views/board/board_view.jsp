@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-	<head>
+	<head>		
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 		<script src="resources/js/httpRequest.js"></script>
@@ -25,20 +25,24 @@
 				var param = "idx=${vo.idx}";
 				
 				sendRequest(url, param, delCheck, "POST");
-			}
+			} //del()
 			
 			function delCheck() {
 				if (xhr.readyState == 4 && xhr.status == 200) {
 					var data = xhr.responseText;
-					var json = (new Function('return' : data))();
+					var json = (new Function('return' + data))();
 					
 					if (json[0].result == 'yes') {
 						alert("삭제되었습니다.");
 						location.href = "board_list.do?page=" + ${param.page};
+					} else { //else if라고 해서 오류가 난 것 같아 보인다.
+						alert("삭제 실패");											
 					}
-					
-					alert("삭제 실패");
 				}
+			} //delCheck()		
+			
+			function reply() {
+				location.href = "reply_form.do?idx=${vo.idx}&page=${param.page}";
 			}
 		</script>
 	</head>
@@ -92,11 +96,11 @@
 					<!-- 삭제 -->
 					<img 
 						src="resources/img/btn_delete.gif" 
-						onclick="del()"
 						style="cursor: pointer;"
+						onclick="del()"
 					>
 				</td>
 			</tr>
-		</table>	
+		</table>			
 	</body>
 </html>

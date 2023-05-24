@@ -51,6 +51,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				del_info = -1 
 		where idx = #{idx}
 	</update>
+	
+	<!-- 댓글 작성을 위한 step + 1 증가 -->
+	<update id="board_update_step" parameterType="board">
+		update board set step = step + 1
+		where ref = #{ref} and step > #{step}	
+	</update>
+	
+	<!-- 댓글 추가 -->
+	<insert id="board_reply" parameterType="board">
+		insert into board values(
+			seq_board_idx.nextVal,
+			#{name},
+			#{subject},
+			#{content},
+			#{pwd},
+			#{ip},
+			sysdate,
+			0,
+			#{ref},
+			#{step},
+			#{depth},
+			0
+		)
+	</insert>
+	
 </mapper>
 
 

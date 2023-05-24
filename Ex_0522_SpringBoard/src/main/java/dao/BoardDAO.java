@@ -52,4 +52,15 @@ public class BoardDAO {
 		return res;
 	}
 	
+	//댓글 추가를 위한 step + 1 작업
+	public int update_step(BoardVO vo) {
+		int res = sqlSession.update("b.board_update_step", vo);
+		return res;
+	}
+	
+	//댓글 추가
+	public int reply(BoardVO vo) {
+		int res = sqlSession.insert("b.board_reply", vo);
+		return res;
+	}
 }

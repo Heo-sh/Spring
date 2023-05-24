@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.BoardDAO;
+import dao.MemberDAO;
 import util.Common;
 import util.Paging;
 import vo.BoardVO;
+import vo.MemberVO;
 
 @Controller
 public class BoardController {
@@ -23,10 +25,16 @@ public class BoardController {
 	@Autowired
 	HttpServletRequest request;
 	
+	@Autowired
+	HttpSession session;
+	
 	BoardDAO board_dao;
 	
-	public BoardController(BoardDAO board_dao) {
+	MemberDAO member_dao;
+	
+	public BoardController(BoardDAO board_dao, MemberDAO member_dao) {
 		this.board_dao = board_dao;
+		this.member_dao = member_dao;
 	}
 	
 	@RequestMapping(value = {"/", "board_list.do"})
@@ -88,6 +96,15 @@ public class BoardController {
 	
 	@RequestMapping("insert_form.do")
 	public String insert_form() {
+		
+		//로그인을 했다면
+		MemberVO vo = (MemberVO)session.getAttribute("id");
+		
+		//로그인을 하지 않았다면
+		if (vo == null) {
+			return Common.VIEW_PATH + "login_form.jsp";
+		}
+		
 		return Common.VIEW_PATH + "insert_form.jsp";
 	}
 	
@@ -124,10 +141,69 @@ public class BoardController {
 		return "[{'result' : 'no'}]";
 	}
 	
+	@RequestMapping("reply_form.do")
+	public String reply_form(int idx, int page) {
+		return Common.VIEW_PATH + "reply_form.jsp?idx=" + idx + "&page=" + page;
+	}
 	
+	//댓글 달기
+	@RequestMapping("reply.do")
+	public String reply(BoardVO vo, int idx, int page) {
+		String ip =  request.getRemoteAddr();
+		
+		//ref, step, depth를 잘 따져야 한다.
+		//같은 ref를 가지고 있는 데이터들 중에서 지금 내가 추가하려고 하는
+		//step값 이상인 애들을 +1을 미리 해놔야 하기 때문에 insert를 먼저 하지 않는다.
+		
+		//기준글의 idx를 이용해서 댓글을 달고 싶은 게시글의 정보를 가져온다.
+		BoardVO baseVO = board_dao.selectOne(idx);
+		
+		//기준글의 step 이상 값을 갖는 데이터에 step = step + 1 처리
+		int res = board_dao.update_step(baseVO);
+		
+		vo.setIp(ip);
+		
+		//댓글이 들어갈 위치 선정
+		vo.setRef(baseVO.getRef());
+		vo.setStep(baseVO.getStep() + 1);
+		vo.setDepth(baseVO.getDepth() + 1);
+		
+		int res1 = board_dao.reply(vo);
+		
+		if (res1 > 0) {
+			return "redirect:board_list.do?page=" + page;			
+		}
+		
+		return null;
+	}
 	
+	//로그인 구현
+	@RequestMapping("login.do")
+	@ResponseBody //Ajax로 넘기면 무조건!
+	public String login(String id, String pw) {
+		
+		MemberVO vo = member_dao.loginCheck(id);
+		
+		
+		//아이디가 존재하지 않는 경우
+		if (vo == null) {
+			return "[{'result' : 'no_id'}]";
+		}
+		
+		//비밀번호가 일치하지 않는 경우
+		if (!vo.getPw().equals(pw)) {
+			return "[{'result' : 'no_pw'}]";
+		}
+		
+		session.setAttribute("id", vo);
+		
+		return "[{'result' : 'clear'}]";
+	}
 	
-	
+	@RequestMapping("login_form.do")
+	public String login_form() {
+		return Common.VIEW_PATH + "login_form.jsp";
+	}
 	
 	
 	
