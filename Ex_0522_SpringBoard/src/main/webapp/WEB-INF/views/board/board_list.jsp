@@ -11,6 +11,16 @@
 				border-collapse: collapse;
 			}
 		</style>
+		<script type="text/javascript">
+			function logout() {
+				
+				if(!confirm("로그아웃하시겠습니까?")) {
+					return;
+				}
+				
+				location.href = "logout.do";
+			}
+		</script>
 	</head>
 	<body>
 		<table border="1" align="center" width="700">
@@ -23,11 +33,17 @@
 								value="로그인"
 								onclick="location.href='login_form.do'"
 							>
+							<input 
+								type="button" 
+								value="회원가입"
+								onclick="location.href='member_insert_form.do'"
+							>
 						</c:when>
 						<c:when test="${not empty id }">
 							<input
 								type="button"
 								value="로그아웃"
+								onclick="logout()"
 							>
 						</c:when>
 					</c:choose>

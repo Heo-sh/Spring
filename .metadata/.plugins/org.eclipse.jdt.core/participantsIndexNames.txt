@@ -41,5 +41,7 @@ D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch
 \Ex_0511_SpringParam\src\main\java
 D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2155950565.index
 \Ex_0512_DB(excercise)\src\main\java
+D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2785259382.index
+\Ex_0525_AOP\src\main\java
 D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2039905908.index
 \Ex_exam\src\main\java

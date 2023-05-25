@@ -17,4 +17,15 @@ public class MemberDAO {
 		return vo;
 	}
 	
+	//id중복체트
+	public int check_id(String id) {
+		int res = sqlSession.selectOne("m.check_id", id);
+		return res;
+	}
+	
+	//실제 회원가입(DB에 저장)
+	public int insert(MemberVO vo) {
+		int res = sqlSession.insert("m.member_insert", vo);
+		return res;
+	}
 }

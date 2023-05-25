@@ -205,13 +205,53 @@ public class BoardController {
 		return Common.VIEW_PATH + "login_form.jsp";
 	}
 	
+	//로그아웃 구현
+	@RequestMapping("logout.do")
+	public String logout() {
+		session.removeAttribute("id");
+		
+		//session에 들어있는 모든 속성 제거
+		//session.invalidate();
+		
+		return "redirect:board_list.do";
+	}
 	
+	//회원가입(member_insert.jsp) 페이지로 넘어가기 위한 mapping
+	@RequestMapping("member_insert_form.do")
+	public String memeber_insert_form() {
+		return Common.VIEW_PATH + "member_insert.jsp";
+	}
 	
+	//id중복체트
+	//중복이 아니면 'yes', 중복이면 'no'라는 문자열 보내기
+	@RequestMapping("check_id.do")
+	@ResponseBody
+	public String check_id(String id) {
+		int res = member_dao.check_id(id);
+		
+		//DB에서부터 잘 넘어오는지 console에서 확인
+		//1이나 0이 반환되면 잘 넘어온다는 뜻
+		//System.out.println(res);
+		
+		if (res > 0) {
+			return "[{'result' : 'no'}]";
+		}
+		
+		return "[{'result' : 'yes'}]";
+	}
 	
-	
-	
-	
-	
+	//실제 회원가입을 위한 mapping
+	@RequestMapping("member_insert.do")
+	public String member_insert(MemberVO vo) {
+		int res = member_dao.insert(vo);
+		
+		if (res > 0) {
+			return Common.VIEW_PATH + "login_form.jsp";
+		}
+		
+		//회원가입이 안되었다면
+		return null;
+	}
 	
 	
 	

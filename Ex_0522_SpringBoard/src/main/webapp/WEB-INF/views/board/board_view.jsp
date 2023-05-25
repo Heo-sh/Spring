@@ -16,6 +16,11 @@
 				var pwd = ${vo.pwd}; //원본 비밀번호
 				var c_pwd = document.getElementById("c_pwd").value; //작성한 비밀번호
 				
+				if (c_pwd == '') {
+					alert("비밀번호를 입력하세요");
+					return;
+				}
+				
 				if (pwd != c_pwd) {
 					alert("비밀번호 불일치");
 					return;

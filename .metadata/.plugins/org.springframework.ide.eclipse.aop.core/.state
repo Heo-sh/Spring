@@ -5,6 +5,7 @@
 <aop-project name="Ex_0515_DB"/>
 <aop-project name="Ex_0518_SpringFileUpload"/>
 <aop-project name="Ex_0519_SpringAutowire"/>
+<aop-project name="Ex_0525_AOP"/>
 <aop-project name="Ex_0508_first"/>
 <aop-project name="Ex_0516_visit"/>
 <aop-project name="Ex_0510_SpringMVC"/>

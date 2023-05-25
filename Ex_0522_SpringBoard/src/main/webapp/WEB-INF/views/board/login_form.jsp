@@ -67,6 +67,11 @@
 						<input type="button" value="취소" onclick="location.href='board_list.do'">
 					</td>
 				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="button" value="회원가입" onclick="location.href='member_insert_form.do'">
+					</td>
+				</tr>
 			</table>
 		</form>	
 	</body>
