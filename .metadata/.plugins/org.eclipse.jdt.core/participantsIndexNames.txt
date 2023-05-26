@@ -39,6 +39,8 @@ D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch
 \Ex_0515_DB\src\main\java
 D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3263108857.index
 \Ex_0511_SpringParam\src\main\java
+D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1185971506.index
+\Ex_0526_test\src\main\java
 D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2155950565.index
 \Ex_0512_DB(excercise)\src\main\java
 D:\Web15_hsh\5.spring\work\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2785259382.index

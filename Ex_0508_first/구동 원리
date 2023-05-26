@@ -1,0 +1,10 @@
+was - web application server
+spring 구동 원리
+1. tomcat(was)에 의해 web.xml을 실행
+2. contextLoderListener 생성
+3. root-context(applicationContext) loading
+4. Spring Container(ROOT) - Service, DAO, VO 구동
+5. client의 요청을 받고
+6. DispatcherServlet(프론트 컨트롤러로 뿌려줌) 생성
+7. servlet-context(presentation-layer) loading
+8. 응답에 맞는 Controller..들 동작
