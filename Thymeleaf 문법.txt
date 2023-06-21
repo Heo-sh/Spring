@@ -1,0 +1,87 @@
+Thymeleaf 문법
+<html xmlns="http://www.thymeleaf.org">
+- Thymeleaf 속성을 쓰기 위해 선언된 네임스페이스
+- 순수 HTML로만 이루어진 페이지의 경우 생략 가능
+
+- 기본적으로 사용되는 위치가 태그의 속성값의 위치에서 사용된다.
+    <tagname attribute> </tagname>
+- 항상 th: 로 시작한다.
+- 타임리프에서 사용되는 el표현식
+  1. ${}: 변수식 - controller에서 넘어오는 데이터를 표현
+  2. @{link}: 링크식
+  3. *{}: 선택변수식 - foreach 등의 조건문을 사용할 때
+	<foreach var="vo" items="${list}">
+		${vo.name} => *{name}
+기본 문법
+1. th:text="${}" 
+    - JSP의 EL과 마찬가지로 ${}표현식을 이용해서
+      CONTROLLER에서 전달받은 데이터에 접근 가능
+2. th:href="@{link}"
+    - a태그의 href 속성과 동일
+    - 괄호 안에다가 클릭시 이동하고자 하는 url(경로)을 입력하면 된다.
+    - link의 일부를 식으로 변경하고 싶다면 경로에 {변수}를 사용할 수 있따.
+      <a th:href="@{/ex02}">링크</a>: controller에서 mapping한 곳으로 경로 설정
+      <a th:href="@{/ex02?currentPageNum={page}}">링크</a>: page라는 변수를 담아 파라미터로 넘겨 경로 설정
+      <a th:href="@{/member/{memId}(memId=${mem.id})}">링크</a>
+3. th:with="${}"
+    - 변수 형태의 값을 재정의 하는 속성
+    - th:with를 통해 새로운 변수값 생성
+      <div th:with="userId=${number}" th:text="${userId}">
+    - jstl의 set과 비슷한 역할
+4. th:value="${}"
+    - input의 value에 값을 삽입할 때 사용
+    - 여러 개의 값을 넣을 땐 + 기호 사용
+      <input type="text" id="userId" th:value="${userId} + 의 이름은 ${userName}"/>
+
+타임리프 식 개체
+- 식 객체를 사용하면 문자열의 처리나, 날짜 형식의 변환 등의 작업 가능
+  <span th:text="${#dates.format(date, 'yyyy-MM-dd')}">date</span>
+- #뒤에 붙는 자료형들은 고정값으로 변하지 않음
+1. #strings: 문자열의 비교, 문자열의 추출(String타입을 위한 기능 제공)
+2. #numbers: 숫자 타입을 위한 기능 제공
+3. #dates, #calender, #temporals: Date 타입과 Calender 타입, LocalDateTime 타입을 위한 기능 제공
+4. #list, #sets, #maps: List, Set, Map을 위한 기능 제공
+
+Form 태그와 관련된 Thymeleaf
+1. th:action="@{}"
+  - <form>태그 사용시, 해당 경로로 요청을 보낼때 사용
+2. th:object="${}"
+  - <form>태그에서 데이터를 보내기 위해 submit을 할 때 데이터가
+    th:object에 설정된 객체에 담겨서 넘어간다.
+  - Controller와 View 사이의 VO클래스의 객체라고 생각하면 된다.
+3. th:field="*{}"
+  - th:object속성과 함께 th:field를 이용해서 HTML태그에 멤버변수를 매핑할 수 있다.
+
+제어문
+1. th:if="${조건식}", th:unless="${조건식}"
+  - JAVA의 조건문에 해당하는 속성
+  - th:unless는 else에 해당
+  - th:unless에 th:if에 들어가는 조건과 동일하게 지정해야한다.
+    <td th:if="${status.even}" th:text="짝수"></td>
+    <td th:unless="${status.even}" th:text="홀수"></td>
+2. th:switch, th:case
+  - switch case문으로 제어할 태그를 th:block으로 설정, 그 안에 코드를 작성한다.
+    <th:block th:switch="${userNum}">
+        <span th:case="1">권한1</span>
+        <span th:case="2">권한2</span>
+    </th:block>
+3. th:each="변수 : ${list}"
+  - JSTL에서의 <c:foreach>와 비슷한 역할
+  - ${list}에서 받아온 변수를 하나씩 가져온다는 의미
+  - 변수 명 개발자 임의대로 지정 가능 
+      <c:foreach var="변수" items="${list}">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

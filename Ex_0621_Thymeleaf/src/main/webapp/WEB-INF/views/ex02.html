@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<!-- 이런 식으로 DB에도 접근 가능 -->
+		<h1>회원 정보 출력 예제</h1>
+		<div>
+			회원번호 : <span th:text="${vo.memNo}">아무개</span>
+		</div>
+		<div>
+			아이디 : <span th:text="${vo.memId}">무지개</span>
+		</div>
+		<div>
+			이름 : <span th:text="${vo.memNm}">상스럽개</span>
+		</div>
+		<div>
+			가입일시 : <span th:text="${#temporals.format(vo.regDt, 'yyyy-MM-dd HH:mm:ss')}">귀찮개</span>
+		</div>
+	</body>
+</html>

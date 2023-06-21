@@ -1,0 +1,18 @@
+처음 프로젝트 생성시
+1. pom.xml 가져오고
+2. pom.xml overview 이름과 artifactid 바꿔주고
+3. reouserces 폴더의 패키지들 가져오고
+4. 기존의 web, root, servlet.xml 지워주고
+5. 프로젝트에서 쓸 DB를 위해 mybatis 명칭 바꿔주고
+6. contest_3_dao 비워주기
+7. servletcontext 비워주기
+
+-----------------------------------------------------------
+db연결순서
+1. vo, dao 클래스 만들기
+2. controller 만들기
+3. ServletContext에서 ???controller객체 만들기
+4. Context_3_dao에서 DB 접속할 dao객체 만들기
+5. mapper에서 쿼리문 작성하기
+6. RequestMapping을 통해 보여질 jsp로 전달하기
+
