@@ -124,6 +124,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\WEB1500_YSJ\5.spring\work2"/>
 			<item value="D:\Web15_hsh\5.spring\work"/>
 			<item value="D:\Web15_hsh\5.spring\work\Ex_0512_DB(excercise)"/>
 		</list>

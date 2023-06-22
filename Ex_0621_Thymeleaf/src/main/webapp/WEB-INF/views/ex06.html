@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h1>Thymeleaf 링크처리 예제</h1>
+		<div>
+			<!-- 다른 웹을 경로로 설정시 https://를 꼭 붙여야 한다. -->
+			<a th:href="@{https://www.naver.com}">naver 이동</a>
+		</div>
+		<div>
+			<!-- controller의 mapping된 곳으로 이동 -->
+			<a th:href="@{ex02}">ex02 이동</a>
+		</div>
+		<div>
+			<!-- controller의 mapping된 곳으로 파라미터를 실어서 이동 -->
+			<a th:href="@{ex07(param1='파라미터1', param2='파라미터2')}">ex07 이동1</a>
+		</div>
+		<div>
+			<!-- controller의 mapping된 곳으로 파라미터를 실어서 이동 &map; == & (Entity Code) -->
+			<a th:href="@{ex07?param1=파라미터1&amp;param2=파라미터2}">ex07 이동1</a>
+		</div>
+	</body>
+</html>
